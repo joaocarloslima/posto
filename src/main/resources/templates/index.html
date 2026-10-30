@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Posto e Oficina</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; overflow: hidden; font-family: "Trebuchet MS", Verdana, sans-serif; background: #9fd3ee; }
+        #cena { position: fixed; inset: 0; }
+        .placa {
+            position: fixed; top: 16px; left: 16px; padding: 10px 16px;
+            background: #c62828; color: #fff; border: 3px solid #fff; border-radius: 6px;
+            font-weight: bold; font-size: 22px; letter-spacing: 1px; box-shadow: 0 3px 0 #8e1b1b;
+        }
+        .painel {
+            position: fixed; right: 16px; bottom: 16px; width: 300px; padding: 14px;
+            background: #fffdf5; border: 3px solid #333; border-radius: 8px; box-shadow: 4px 4px 0 #333;
+        }
+        .painel h2 { margin: 0 0 4px; font-size: 18px; }
+        .painel .tipo { margin: 0 0 12px; color: #666; font-size: 13px; }
+        .botoes { display: flex; gap: 8px; }
+        .botoes button {
+            flex: 1; padding: 10px 6px; border: 2px solid #333; border-radius: 6px;
+            font-weight: bold; font-size: 14px; cursor: pointer; box-shadow: 2px 2px 0 #333;
+        }
+        .botoes button:active { transform: translate(2px, 2px); box-shadow: none; }
+        .botoes button:disabled { opacity: .4; cursor: default; }
+        #abastecer { background: #ffb300; }
+        #recarregar { background: #66bb6a; }
+        .log { margin: 12px 0 0; padding: 0; list-style: none; max-height: 140px; overflow-y: auto; font-size: 13px; }
+        .log li { padding: 4px 0; border-top: 1px dashed #ccc; }
+        .log li.ok { color: #2e7d32; }
+        .log li.nao { color: #c62828; }
+        .dica { position: fixed; left: 16px; bottom: 16px; color: #234; font-size: 13px; background: #ffffffcc; padding: 6px 10px; border-radius: 6px; }
+        #reiniciar { margin-top: 10px; background: none; border: none; color: #555; text-decoration: underline; cursor: pointer; font-size: 12px; padding: 0; }
+    </style>
+</head>
+
+<body>
+    <div id="cena"></div>
+
+    <div class="placa">⛽ POSTO E OFICINA</div>
+
+    <div class="painel">
+        <h2 id="nome">Escolha um cliente</h2>
+        <p class="tipo" id="tipo">Clique em um veículo ou máquina da fila</p>
+        <div class="botoes">
+            <button id="abastecer" disabled>⛽ Abastecer</button>
+            <button id="recarregar" disabled>🔌 Recarregar</button>
+        </div>
+        <ul class="log" id="log"></ul>
+        <button id="reiniciar">Reiniciar fila</button>
+    </div>
+
+    <div class="dica">Arraste para girar a câmera · role para aproximar</div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="/js/posto.js"></script>
+</body>
+
+</html>
